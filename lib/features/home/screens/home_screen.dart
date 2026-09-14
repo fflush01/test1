@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:test1/features/home/models/activity.dart';
 import 'package:test1/features/home/widgets/interactive_activity_card.dart';
+import 'package:test1/features/profile/screens/profile_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
   @override
-  State createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State {
+class _MyHomePageState extends State<MyHomePage> {
   List<Activity> activityList = [
     Activity(
       title: "Pasos Diarios",
@@ -54,6 +55,7 @@ class _MyHomePageState extends State {
       iconColor: Colors.purple,
     ),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +63,17 @@ class _MyHomePageState extends State {
         backgroundColor: Colors.blueAccent,
         foregroundColor: Colors.white,
         title: const Text("Panel de actividad física"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.person),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfileScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

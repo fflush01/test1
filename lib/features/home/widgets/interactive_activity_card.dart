@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test1/features/details/screens/detail_screen.dart';
 import 'package:test1/features/home/models/activity.dart';
+
 class InteractiveActivityCard extends StatefulWidget {
   final Activity activity;
 
@@ -8,9 +9,9 @@ class InteractiveActivityCard extends StatefulWidget {
 
   @override
   State<InteractiveActivityCard> createState() =>
-   _InteractiveActivityCardState();
-
+      _InteractiveActivityCardState();
 }
+
 class _InteractiveActivityCardState extends State<InteractiveActivityCard> {
   bool isCompleted = false;
 
@@ -19,14 +20,16 @@ class _InteractiveActivityCardState extends State<InteractiveActivityCard> {
     return Card(
       color: isCompleted ? Colors.green.shade100 : Colors.white,
       elevation: 4,
-      child:ListTile(
+      child: ListTile(
         title: Text(widget.activity.title),
         subtitle: Text(isCompleted ? "¡Completado!" : "Pendiente de completar"),
         onTap: () {
-          Navigator.push(context,
+          Navigator.push(
+            context,
             MaterialPageRoute(
               builder: (context) => DetailScreen(activity: widget.activity),
-            ));
+            ),
+          );
         },
         trailing: IconButton(
           onPressed: () {
@@ -41,6 +44,5 @@ class _InteractiveActivityCardState extends State<InteractiveActivityCard> {
         ),
       ),
     );
-      
   }
 }
